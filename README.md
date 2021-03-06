@@ -1,2 +1,1 @@
-# vue-components
-practicing vue components
+# Vue Components
