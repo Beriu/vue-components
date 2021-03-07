@@ -1,9 +1,11 @@
 <template>
-   <div>
-       <ul v-for="(value, key) of items" :key="key">
-           <li>{{ value }}</li>
-       </ul>
-   </div>
+   <ul>
+       <li v-for="(value, key) of items"
+           :key="key"
+           @click="$emit('item-selection', [value, key])">
+           <span>{{ value }}</span>
+       </li>
+   </ul>
 </template>
 
 <script>
@@ -21,6 +23,22 @@ export default Vue.extend({
 })
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+ul {
+    padding: 0;
+    margin:  0;
+    list-style: none;
+    text-align: left;
 
+    li {
+        padding: 0.25rem;
+        cursor: pointer;
+        background-color: rgba(0, 0, 0, 0.1);
+        transition: background-color 100ms ease-in;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+    }
+}
 </style>

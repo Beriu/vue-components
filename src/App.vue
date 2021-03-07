@@ -1,18 +1,38 @@
 <template>
     <main>
+        {{ selectedItem }}
         <autocomplete
-            label="Cities autocomplete"
-            :items="['apples', 'ridichii', 'da', 'mi-e lene']"/>
+            v-model="selectedItem"
+            :items="items"
+            selection-label="firstname"
+            return-object
+            type="text"
+            label="Fruits"
+            placeholder="Cherry..."/>
     </main>
 </template>
 
 <script lang="ts">
 import Vue from 'vue';
 import Autocomplete from "@/components/Autocomplete.vue";
+import users from '@/mocks/users.json';
 
 export default Vue.extend({
     name: 'App',
+
     components: {Autocomplete},
+
+    mounted() {
+        const setItems = () => this.items = users;
+        setTimeout(setItems, 2000);
+    },
+
+    data() {
+        return {
+            selectedItem: null,
+            items: []
+        }
+    }
 });
 </script>
 
